@@ -1,4 +1,4 @@
-package com.example.kiosk.lv2;
+package com.example.kiosk.lv3;
 
 //메뉴 세부 속성
 public class MenuItem {
