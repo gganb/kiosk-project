@@ -25,6 +25,7 @@ public class Kiosk {
                 choiceNumber(choice, menuItemArray);
                 if (choice == 0)
                     break;
+
             } catch (ArrayIndexOutOfBoundsException e) {    // 지정된 범위 외의 번호 입력시 예외 처리
                 System.out.println(e.getMessage());
                 System.out.println();
@@ -48,11 +49,12 @@ public class Kiosk {
                 printInfo(menuItemList.get(3));
                 break;
             case 0:
-                System.out.println("종료합니다.");
+                System.out.println("프로그램을 종료합니다.");
                 break;
             default:
                 throw new ArrayIndexOutOfBoundsException("존재하지 않는 번호입니다.");
         }
+
     }
 
     // 선택된 메뉴 출력
