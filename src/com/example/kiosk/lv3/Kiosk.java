@@ -18,6 +18,7 @@ public class Kiosk {
     public void start() {
         while (true) {
             try {
+                printMenu();
                 // 번호 입력받기
                 int choice = Integer.parseInt(scan.nextLine());
 
@@ -26,6 +27,7 @@ public class Kiosk {
                     break;
             } catch (ArrayIndexOutOfBoundsException e) {    // 지정된 범위 외의 번호 입력시 예외 처리
                 System.out.println(e.getMessage());
+                System.out.println();
             }
         }
     }
@@ -55,16 +57,17 @@ public class Kiosk {
 
     // 선택된 메뉴 출력
     public void printInfo(MenuItem menuItem) {
-        System.out.println("이름 : " + menuItem.burgerName);
-        System.out.println("가격 : " + menuItem.burgerPrice);
-        System.out.println("설명 : " + menuItem.burgerInfo);
+        System.out.print("선택한 메뉴: ");
+        System.out.printf("%-10s | W %-2s | %s\n", menuItem.burgerName, menuItem.burgerPrice, menuItem.burgerInfo);
+        System.out.println();
     }
 
     // 반복문으로 List 안에 있는 menuItemList 하니씩 출력
     public void printMenu() {
         System.out.println("[ SHAKESHACK MENU ]");
         for (int i = 0; i < menuItemArray.size(); i++) {
-            System.out.printf("%s. %-15s | %-5sW | %s\n", (i + 1), menuItemArray.get(i).burgerName, menuItemArray.get(i).burgerPrice, menuItemArray.get(i).burgerInfo);
+            MenuItem getmenuItem = menuItemArray.get(i);
+            System.out.printf("%s. %-15s | %-5sW | %s\n", (i + 1), getmenuItem.burgerName, getmenuItem.burgerPrice, getmenuItem.burgerInfo);
         }
         System.out.println("0. 종료하기          | ");
     }
