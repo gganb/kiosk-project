@@ -19,17 +19,11 @@ public class KioskMain {
         // Scanner 선언
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("[ SHAKESHACK MENU ]");
-
-        // 반복문으로 List 안에 있는 menuItemList을 하니씩 출력
-        for (int i = 0; i < menuItemList.size(); i++) {
-            MenuItem getmenuItem =menuItemList.get(i);
-            System.out.printf("%s. %-15s | %-5s | %s\n",i+1,getmenuItem.burgerName,getmenuItem.burgerPrice,getmenuItem.burgerInfo);
-           }
-        System.out.println("0. 종료           | 종료");
 
         // 반복문 시작
         while (true) {
+            // 메뉴 출력
+            printMenu(menuItemList);
             // 숫자 입력 받기
             int choice = Integer.parseInt(sc.nextLine());
 
@@ -40,6 +34,7 @@ public class KioskMain {
         }
 
     }
+
     // 입력된 숫자에 따른 처리
     private static void choiceNumber(int num, List<MenuItem> menuItemList) {
         switch (num) {
@@ -65,9 +60,19 @@ public class KioskMain {
     }
 
     private static void printInfo(MenuItem menuItem) {
-        System.out.println("이름 : " + menuItem.burgerName);
-        System.out.println("가격 : " + menuItem.burgerPrice);
-        System.out.println("설명 : " + menuItem.burgerInfo);
+        System.out.print("선택한 메뉴: ");
+        System.out.printf("%-10s | W %-2s | %s\n", menuItem.burgerName, menuItem.burgerPrice, menuItem.burgerInfo);
+        System.out.println();
     }
 
+    // 반복문으로 List 안에 있는 menuItemList을 하니씩 출력
+    private static void printMenu(List<MenuItem> menuItemList) {
+        System.out.println("[ SHAKESHACK MENU ]");
+        for (int i = 0; i < menuItemList.size(); i++) {
+            MenuItem getmenuItem = menuItemList.get(i);
+            System.out.printf("%s. %-15s | %-5s | %s\n", i + 1, getmenuItem.burgerName, getmenuItem.burgerPrice, getmenuItem.burgerInfo);
+        }
+        System.out.println("0. 종료           | 종료");
+
+    }
 }
