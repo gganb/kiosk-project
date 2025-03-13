@@ -8,7 +8,8 @@ import java.util.List;
  *
  * @return
  */
-public abstract class DataBuild {
+public  class DataBuild {
+    private DataBuild(){}
     public static List<Menu> dataBuild() {
         // 메뉴 항목 리스트 선언
         List<Menu> menuList = new ArrayList<>();
