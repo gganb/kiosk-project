@@ -1,4 +1,4 @@
-package com.example.kiosk.lv5;
+package com.example.kiosk.challenge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 초기 메뉴 데이터 입력
  *
- *  @return
+ * @return
  */
 public abstract class DataBuild {
     public static List<Menu> dataBuild() {
@@ -39,10 +39,11 @@ public abstract class DataBuild {
 
         Menu side = new Menu("Sides", sideList);
         side.addMenuItem(new MenuItem("French Fries", 3.0, "바삭 바삭 맛있는 감자튀김 \uD83C\uDF5F"));
-        side.addMenuItem(new MenuItem("Cheese Fries", 3.8, "[BEST] 진한 치즈 소스를 듬뿍 올린 감자튀김 \uD83C\uDF5Fㅁㅇㅁ"));
+        side.addMenuItem(new MenuItem("Cheese Fries", 3.8, "[BEST] 진한 치즈 소스를 듬뿍 올린 감자튀김 \uD83C\uDF5F"));
         side.addMenuItem(new MenuItem("Onion Fries", 3.5, "얇은 튀김옷을 입은 달콤한 양파링"));
 
         menuList.add(side); // 사이드 메뉴 추가
+
         return menuList;
     }
 }
