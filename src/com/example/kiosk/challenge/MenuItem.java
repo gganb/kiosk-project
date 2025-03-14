@@ -1,4 +1,4 @@
-package com.example.kiosk.lv5;
+package com.example.kiosk.challenge;
 
 //메뉴 세부 속성
 public class MenuItem {
