@@ -27,9 +27,14 @@
 ### ✅ 4. 예외 처리
 - 존재하지 않는 번호 입력 시 오류 메시지를 출력하고 재입력하도록 유도합니다.
 
+
+<br>
 ---
 ## 시연 영상
 
+![Image](https://github.com/user-attachments/assets/9a5ce4e4-6636-486d-8c6a-517e35757bed)
+
+<br>
 
 ##  코드 구조 설명
 ```plaintext
