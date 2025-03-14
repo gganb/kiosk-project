@@ -49,7 +49,7 @@ public class CartManage {
         System.out.println("[ Total ]");
         System.out.println("W " + cart.getTotalPrice());
     }
-
+//TODO 메뉴판 선택시 메인 메뉴로 돌아가도록 해결하기
     public void pay() {
         System.out.printf("%d. %s      %d. %s\n", 1, "주문", 2, "메뉴판");
         int payNum = Input.getInputNum();
