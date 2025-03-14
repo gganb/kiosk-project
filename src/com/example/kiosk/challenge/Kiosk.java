@@ -2,7 +2,6 @@ package com.example.kiosk.challenge;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 // 프로그램 순서 및 흐름 제어 담당
 public class Kiosk {
@@ -13,7 +12,6 @@ public class Kiosk {
     public Kiosk(List<Menu> menuList, Cart cart) {
         this.menuList = menuList;
         this.cartManage = new CartManage(cart);
-
     }
 
     // 키오스크 시작 함수
@@ -25,16 +23,23 @@ public class Kiosk {
                 // 메인 메뉴 출력
                 printMainMenu();
 
-                // 메인 메뉴 선택 번호 입력받기
+                // 메인 메뉴 선택 번호 입력받기 choice = 메인 메뉴에서 선택
                 int choice = Input.getInputNum();
 
-                // 메인 메뉴 종료
-                if (choice == 0) {
-                    System.out.println("프로그램을 종료합니다.");
-                    break;
+                switch (choice) {
+                    case 0:    // 메인 메뉴 종료
+                        System.out.println("프로그램을 종료합니다.");
+                        return;
+                    case 4, 5:
+                        if (cartManage.cartIsEmpty()) {
+                            System.out.println("잘못된 접근입니다");
+                            continue;
+                        } else {
+                            cartManage.selectOrderMenu(choice);
+                            return;
+                        }
                 }
-
-                String back = choiceNumber(choice, menuList);
+                String back = choiceNumber(choice);
                 if ("BACK".equals(back)) {
                     System.out.println();
                     continue;
@@ -46,7 +51,7 @@ public class Kiosk {
     }
 
     // 메뉴 선택 함수
-    public String choiceNumber(int choice, List<Menu> menuList) {
+    public String choiceNumber(int choice) {
         // 메뉴 리스트 범위 밖의 숫자면 예외처리
         if (choice < 1 || choice > menuList.size()) {
             throw new ArrayIndexOutOfBoundsException("[ERROR] 존재하지 않는 번호입니다!");
@@ -55,7 +60,7 @@ public class Kiosk {
         Menu selectMenu = menuList.get(choice - 1);
         // 메뉴 아이템 리스트 출력
         System.out.println();
-        selectMenu.printMenu();
+        selectMenu.printMenuItemList();
 
         // 리스트가 비어있을 경우
         if (selectMenu.getMenuItemList().isEmpty()) {
@@ -74,8 +79,8 @@ public class Kiosk {
         }
 
         // 메뉴 상세 정보 출력 menuChoice 가 입력한 번호 . ...
-        selectMenu.printInfo(menuItemChoice - 1);
-        cartManage.addCartListManege(selectMenu, menuItemChoice - 1);
+        selectMenu.printMenuItemInfo(menuItemChoice - 1);
+        cartManage.addCartListManage(selectMenu, menuItemChoice - 1);
         return "OK";
     }
 
@@ -87,11 +92,12 @@ public class Kiosk {
         }
         System.out.println("0. 종료      | 종료");
 
+        // 장바구니가 비어있지 않을 경우
         if (!cartManage.cartIsEmpty()) {
+            System.out.println();
             System.out.println("[ ORDER MENU ]");
             System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.");
             System.out.println("5. Cancel       | 진행중인 주문을 취소합니다.");
-            cartManage.selectOrderMenu();
         }
 
 
