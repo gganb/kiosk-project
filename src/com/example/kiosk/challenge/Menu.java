@@ -15,8 +15,7 @@ public class Menu {
 
     /**
      * 메뉴 아이템 리스트를 가져오는 getter
-     *
-     * @return
+     * @return List<MenuItem>
      */
     public List<MenuItem> getMenuItemList() {
         return menuItemList;
@@ -29,7 +28,7 @@ public class Menu {
     /**
      * 메뉴 항목 가져오기
      * @param menuChoice
-     * @return
+     * @return MenuItem
      */
     public MenuItem getMenuItem(int menuChoice) {
         return menuItemList.get(menuChoice);
@@ -46,19 +45,19 @@ public class Menu {
 
     /**
      * 메뉴 출력
-     * printInfo : 선택한 메뉴 상세정보
-     * printMenu : 메뉴 정보 출력 (이름 / 가격 / 설명)
+     * printMenuItemInfo : 선택한 메뉴 상세정보
+     * printMenuItemList : 메뉴 출력 (이름 / 가격 / 설명)
      */
-    public void printInfo(int menuChoice) {
+    public void printMenuItemInfo(int menuChoice) {
         MenuItem selectItem = menuItemList.get(menuChoice);
         System.out.print("선택한 메뉴: ");
         System.out.printf("%-10s | W %-2s | %s\n", selectItem.getItemName(), selectItem.getItemPrice(), selectItem.getItemInfo());
         System.out.println();
-    //    return selectItem;
+
 
     }
 
-    public void printMenu() {
+    public void printMenuItemList() {
         System.out.println("[ " + getCategory().toUpperCase() + " MENU ]");
         for (int i = 0; i < menuItemList.size(); i++) {
             MenuItem item = menuItemList.get(i);
